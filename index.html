@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>JS Drum Kit</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/style.css" />
     <link rel="icon" href="https://fav.farm/🔥" />
   </head>
   <body>
@@ -56,6 +56,16 @@
     <audio data-key="75" src="sounds/tom.wav"></audio>
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
-    <script></script>
+    <script>
+      window.addEventListener("keydown", function (event) {
+        const audio = document.querySelector(
+          `audio[data-key="${event.keyCode}"]`
+        );
+        if (!audio) return; //stop null from function if key without sound typed//
+        audio.currentTime = 0; //rewinds function to the start so it plays again quickly//
+
+        audio.play();
+      });
+    </script>
   </body>
 </html>
